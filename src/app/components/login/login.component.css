@@ -1,0 +1,20 @@
+[disabled] {
+    cursor: not-allowed;
+}
+#login-container{
+    padding: 20px;
+}
+#login-wrapper{
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.header-wrapper>h1{
+    text-align: center;
+}
+#login-submit{
+    width: 75px;
+    margin: 0 auto;
+}

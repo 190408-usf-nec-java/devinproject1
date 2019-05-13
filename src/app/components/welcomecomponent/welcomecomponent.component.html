@@ -1,0 +1,48 @@
+<section class="d-flex justify-content-center">
+  <div class="col-12 col-lg-9 bg-light">
+    <h1 class="text-center">Expenses</h1>
+    <table class="table">
+        <thead class="thead bg-primary">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Status</th>
+            <!--<th scope="col">Reciept</th>-->
+            <th scope="col">Description</th>
+            <th scope="col">Type</th>
+            <th scope="col">Submitted At</th>
+            <th scope="col">Resolved At</th>
+            <th scope="col">
+              <select class="form-control select" (change)="logger($event)">
+                <option *ngFor="let opt of options" [ngValue]="opt">
+                  {{ opt }}
+                </option>
+                <option [selected]="true == true" [ngValue]="All">
+                  All
+                </option>
+              </select>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of expenses">
+                <td *ngIf="isFiltered(item)" scope="row">{{ item.authorName }}</td>
+                <td *ngIf="isFiltered(item)">{{ item.amount }}</td>
+                <td *ngIf="isFiltered(item)" class="bg-secondary">{{ item.status }}</td>
+                <!--<td *ngIf="isFiltered(item)">{{ item.link }}</td>-->
+                <td *ngIf="isFiltered(item)">{{ item.desciption }}</td>
+                <td *ngIf="isFiltered(item)">{{ item.type }}</td>
+                <td *ngIf="isFiltered(item)">{{ item.submittedAt }}</td>
+                <td *ngIf="isFiltered(item)">{{ item.resolvedAt }}</td>
+                <td *ngIf="pending(item) && isFiltered(item) && isManager()">
+                  <button (click)="approved(item)" [disabled]="!isOwned(item)" class="appove btn btn-success">Approve</button>
+                </td>
+                <td *ngIf="pending(item) && isFiltered(item) && isManager()">
+                  <button (click)="denied(item)" [disabled]="!isOwned(item)" class="appove btn btn-danger">Deny</button>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+  </div>
+</section>

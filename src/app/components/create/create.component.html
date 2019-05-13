@@ -1,0 +1,38 @@
+<section class="container">
+  <div class="wrapper bg-light">
+    <h1 class="text-center">Create New Expense</h1>
+    <div class="input-group entry">
+      <label for="amount" class="col-12 col-md-3 text-right">Amount: </label>
+      <input type="number" [(ngModel)]="amount" class="form-control col-12 col-md-8" id="amount">
+    </div>
+    <div class="input-group entry">
+      <label for="desc" class="col-12 col-md-3 text-right">Description: </label>
+      <input type="text" [(ngModel)]="desc" class="form-control col-12 col-md-8" id="desc">
+    </div>
+    <div class="input-group entry">
+      <label for="type" class="col-12 col-md-3 text-right">Type: </label>
+      <select [(ngModel)]="type" class="form-control option col-12 col-md-8" id="type">
+        <option>
+          Lodging
+        </option>
+        <option>
+          Travel
+        </option>
+        <option>
+          Food
+        </option>
+        <option>
+          Other
+        </option> 
+      </select>
+    </div>
+    <div *ngIf="false" class="input-group entry">
+      <label for="reciept" class="col-12 col-md-3 text-right">Reciept: </label>
+      <input type="file" ng2FileSelect [uploader]="uploader" class="form-control col-12 col-md-8" id="reciept">
+    </div>
+    <p>{{ message }} </p>
+    <div class="entry d-flex col-12 justify-content-center">
+      <button (click)="submitExpense()" [disabled]="!valid()" class="btn btn-primary">Submit Expense</button>
+    </div>
+  </div>
+</section>
